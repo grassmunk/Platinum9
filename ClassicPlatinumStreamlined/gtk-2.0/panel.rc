@@ -1,0 +1,195 @@
+#################### PANEL BACKGROUND 194 LINES ############################
+
+style "panelbg"
+{
+  xthickness	= 0
+  ythickness	= 0
+#bg_pixmap[NORMAL]	= "Panel/panel-bg.png"
+
+  fg[NORMAL]        = "#000000"
+  fg[PRELIGHT]      = "#ffffff"
+  fg[ACTIVE]        = "#ffffff"
+  fg[SELECTED]      = "#ffffff"
+  fg[INSENSITIVE]   = "#dddddd"
+  text[NORMAL]      = "#000000"
+  text[PRELIGHT]    = "#000000"
+  text[ACTIVE]      = "#ffffff"
+  text[SELECTED]    = "#ffffff"
+  text[INSENSITIVE] = "#dddddd"
+}
+class "*Panel*" style "panelbg"
+class "*notif*" style "panelbg"
+class "*Notif*" style "panelbg"
+class "*Tray*"  style "panelbg"
+class "*tray*"  style "panelbg"
+
+####################### PANEL ###########################################
+
+style "panel"
+{
+  fg[NORMAL]        = "#000000"
+  fg[PRELIGHT]      = "#ffffff"
+  fg[ACTIVE]        = "#ffffff"
+  fg[SELECTED]      = "#ffffff"
+  fg[INSENSITIVE]   = "#dddddd"
+  text[NORMAL]      = "#ffffff"
+  text[PRELIGHT]    = "#ffffff"
+  text[ACTIVE]      = "#ffffff"
+  text[SELECTED]    = "#ffffff"
+  text[INSENSITIVE] = "#dddddd"
+}
+class "*Panel*"				style "panel"
+widget_class "*Panel*GtkToggleButton"	style "panel"
+widget_class "*Panel*GtkButton"		style "panel"
+widget_class "*.Panel*Button*GtkLabel"	style "panel"
+widget_class "*.Panel*GtkLabel"		style "panel"
+
+##################### PANEL BUTTONS ########################################
+
+style "panelbuttons" = "buttons"
+{
+#  font_name = "Bold"
+
+  fg[NORMAL]        = "#000000"
+  fg[PRELIGHT]      = "#ffffff" # text on buttons (hover)
+  fg[ACTIVE]        = "#ffffff" # text on unfocused tabs
+  fg[SELECTED]      = "#ffffff" # selected text on lists
+  fg[INSENSITIVE]   = "#ddd"
+
+  text[NORMAL]      = "#000000"
+  text[PRELIGHT]    = "#ffffff"
+  text[ACTIVE]      = "#ffffff"
+  text[SELECTED]    = "#ffffff"
+  text[INSENSITIVE] = "#dddddd"
+ 
+  xthickness	= 0
+  ythickness	= 0
+
+	GtkWidget::focus_padding = 0
+
+  engine "pixmap"
+{
+	image
+	{
+		function	= BOX
+		recolorable	= TRUE
+		state		= NORMAL
+		file		= "Panel/normal.png"
+		border		= { 3, 3, 3, 3 }
+		stretch		= TRUE
+	}
+
+	image
+	{
+		function	= BOX
+		recolorable	= TRUE
+		state		= PRELIGHT
+		file		= "Panel/prelight.png"
+		border		= { 0, 0, 0, 0 }
+		stretch		= TRUE
+	}
+
+	image
+	{
+		function	= BOX
+		recolorable	= TRUE
+		shadow		= OUT
+		state		= PRELIGHT
+		file		= "Panel/prelight.png"
+		border		= { 0, 0, 0, 0 }
+		stretch		= TRUE
+	}
+
+	image
+	{
+		function	= BOX
+		recolorable	= TRUE
+		shadow		= IN
+		state		= PRELIGHT
+		file		= "Panel/prelight.png"
+		border		= { 0, 0, 0, 0 }
+		stretch		= TRUE
+	}
+	
+	image
+	{
+		function	= BOX
+		recolorable	= TRUE
+		shadow		= OUT
+		state		= ACTIVE
+		file		= "Panel/prelight.png"
+		border		= { 0, 0, 0, 0 }
+		stretch		= TRUE
+	}
+	image
+	{
+		function	= BOX
+		recolorable	= TRUE
+		shadow		= IN
+		state		= ACTIVE
+		file		= "Panel/active.png"
+		border		= { 3, 3, 3, 3 }
+		stretch		= TRUE
+	}  
+	image
+	{
+		function	= BOX
+		recolorable	= TRUE
+		state		= INSENSITIVE
+		file		= "Panel/insensitive.png"
+		border		= { 3, 3, 3, 3 }
+		stretch		= TRUE
+	}
+  }
+}
+
+widget_class	"*Panel*GtkToggleButton"		style "panelbuttons"
+widget_class	"*Panel*GtkButton"			style "panelbuttons"
+widget_class	"*PanelButton*."			style "panelbuttons"
+
+widget		"*PanelWidget*"				style "panelbuttons"
+widget		"*PanelApplet*"				style "panelbuttons"
+widget_class	"*PanelButton*."			style "panelbuttons"
+
+class		"PanelApplet"				style "panelbg"
+class		"GtkPanel*MenuBar"			style "panelbg"
+class		"GtkPanel*GtkToolBar*ToggleButton"	style "panelbg"
+widget		"*PanelApplet*"				style "panelbg"
+widget_class	"*PanelApplet*"				style "panelbg"
+widget_class	"*Panel*"				style "panelbg"
+
+################################################################################
+
+widget_class	"*Panel*GtkToggleButton"		style "panelbuttons"
+widget		"*.tasklist-button"			style "panelbuttons"
+widget_class	"*PanelToplevel*Button"			style "panelbuttons"
+widget_class	"*Xfce*Panel*.GtkToggleButton"		style "panelbuttons"
+widget_class	"*Xfce*NetkTasklist*GtkToggleButton"	style "panelbuttons"
+
+################################################################################
+
+style "handle" 
+{
+    engine "pixmap"
+    {    
+        image
+        {
+            function	= HANDLE
+            file	= "Panel/handle-bg.png"
+            border	= { 0, 0, 0, 0 }
+            stretch	= TRUE
+            orientation	= VERTICAL
+        }    
+        image
+        {
+            function	= HANDLE
+            file	= "Panel/h-handle-bg.png"
+            border	= { 0, 0, 0, 0 }
+            stretch	= TRUE
+            orientation	= HORIZONTAL
+        }
+    }
+}
+
+class "PanelAppletFrame" style "handle"
+

@@ -1,0 +1,7 @@
+List of changes:
+* All font overrides in the theme removed - the font can be configured separately (I just use 9pt DejaVu Sans)
+* Toolbar buttons set to be flat (no button) until you hover over them
+  * toggle-button style set to match toolbar buttons instead of regular buttons
+* y-thickness of notebook tabs changed from 3 to 0 to avoid stretching
+* Panel background disabled and panel "active" and "prelight" button states changed to solid color (better Xfce compatibility)
+* Horizontal and vertical scrollbar troughs replaced

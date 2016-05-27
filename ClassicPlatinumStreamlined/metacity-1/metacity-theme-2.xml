@@ -1,0 +1,870 @@
+<?xml version="1.0"?>
+<metacity_theme>
+    <info>
+        <name>Classic</name>
+        <author>J Yager &lt;digitalcrutch@peoplepc.com&gt;</author>
+        <copyright>None</copyright>
+        <date>March 01, 2004</date>
+        <description>
+            MacOS inspired theme.  Actually, this would be a Be inspired
+            theme, I have never used a Mac.  But, it still looks good.
+        </description>
+    </info>
+
+    <constant name="Pad" value="4"/>
+
+    <!-- Normal window geometry -->
+    <frame_geometry
+        name="normal_geometry"
+        has_title="true"
+        rounded_top_left="false"
+        rounded_top_right="1"
+        rounded_bottom_left="1"
+        rounded_bottom_right="false">
+
+        <distance name="left_width" value="6"/>
+        <distance name="right_width" value="7"/>
+        <distance name="bottom_height" value="7"/>
+
+        <distance name="left_titlebar_edge" value="3"/>
+        <distance name="right_titlebar_edge" value="3"/>
+
+        <distance name="title_vertical_pad" value="0"/>
+
+        <distance name="button_width" value="13"/>
+        <distance name="button_height" value="13"/>
+
+        <border name="title_border" left="2" right="0" top="2" bottom="0"/>
+        <border name="button_border" left="1" right="2" top="4" bottom="5"/>
+    </frame_geometry>
+
+    <!-- Utility window geometry -->
+    <frame_geometry
+        name="utility_geometry"
+        title_scale="x-small"
+        parent="normal_geometry"/>
+
+    <!-- Border(only) window geometry -->
+    <frame_geometry
+        name="border_geometry"
+        has_title="false"
+        parent="normal_geometry">
+
+        <distance name="left_titlebar_edge" value="0"/>
+        <distance name="right_titlebar_edge" value="0"/>
+
+        <distance name="button_width" value="0"/>
+        <distance name="button_height" value="0"/>
+
+        <border name="title_border" left="0" right="0" top="6" bottom="0"/>
+        <border name="button_border" left="0" right="0" top="0" bottom="0"/>
+    </frame_geometry>
+
+    <!-- Focused window decorations -->
+    <draw_ops name="background_focused">
+        <!-- Draw window frame -->
+        <rectangle
+            color="gtk:bg[NORMAL]"
+            filled="true"
+            x="0"
+            y="0"
+            width="width - 2"
+            height="height - 2"/>
+
+        <!-- Draw window border -->
+        <!-- Note that, since the origin of the window (the upper left corner)
+             is (x, y) = (0, 0), the lower right corner is (x, y) = (width - 1,
+             height - 1). -->
+        <rectangle
+            color="gtk:text[NORMAL]"
+            filled="false"
+            x="0"
+            y="0"
+            width="width - 2"
+            height="height - 2"/>
+
+        <!-- Draw window base -->
+        <rectangle
+            color="gtk:bg[NORMAL]"
+            filled="true"
+            x="left_width - 1"
+            y="top_height - 1"
+            width="width - left_width - right_width + 2"
+            height="height - top_height - bottom_height + 2"/>
+
+        <!-- Draw inside border -->
+        <rectangle
+            color="gtk:text[NORMAL]"
+            filled="false"
+            x="left_width - 1"
+            y="top_height - 1"
+            width="width - left_width - right_width + 1"
+            height="height - top_height - bottom_height + 1"/>
+
+        <!-- top left to top right (inside) -->
+        <line
+            color="gtk:fg[NORMAL]"
+            x1="left_width - 2"
+            y1="top_height - 2"
+            x2="width - right_width"
+            y2="top_height - 2"/>
+
+        <!-- top left to top right (outside) -->
+        <line
+            color="gtk:base[NORMAL]"
+            x1="1"
+            y1="1"
+            x2="width - 4"
+            y2="1"/>
+
+        <!-- top left to bottom left (inside) -->
+        <line
+            color="gtk:fg[NORMAL]"
+            x1="left_width - 2"
+            y1="top_height - 2"
+            x2="left_width - 2"
+            y2="height - bottom_height + 1"/>
+
+        <!-- top left to bottom left (outside) -->
+        <line
+            color="gtk:base[NORMAL]"
+            x1="1"
+            y1="1"
+            x2="1"
+            y2="height - 4"/>
+
+        <!-- top right to bottom right (inside) -->
+        <line
+            color="gtk:base[NORMAL]"
+            x1="width - right_width + 1"
+            y1="top_height - 1"
+            x2="width - right_width + 1"
+            y2="height - bottom_height + 1"/>
+
+        <!-- top right to bottom right (outside) -->
+        <line
+            color="gtk:fg[NORMAL]"
+            x1="width - 3"
+            y1="2"
+            x2="width - 3"
+            y2="height - 3"/>
+
+        <!-- bottom left to bottom right (inside) -->
+        <line
+            color="gtk:base[NORMAL]"
+            x1="left_width - 2"
+            y1="height - bottom_height + 1"
+            x2="width - right_width + 1"
+            y2="height - bottom_height + 1"/>
+
+        <!-- bottom left to bottom right (outside) -->
+        <line
+            color="gtk:fg[NORMAL]"
+            x1="2"
+            y1="height - 3"
+            x2="width - 3"
+            y2="height - 3"/>
+
+	 <!-- shadow -->
+
+        <!-- top right to bottom right -->
+        <line
+            color="gtk:text[NORMAL]"
+            x1="width - 1"
+            y1="1"
+            x2="width - 1"
+            y2="height - 1"/>
+
+        <!-- bottom left to bottom right-->
+        <line
+            color="gtk:text[NORMAL]"
+            x1="1"
+            y1="height - 1"
+            x2="width - 1"
+            y2="height - 1"/>
+
+    </draw_ops>
+
+    <!-- Shaded focused windows -->
+    <draw_ops name="background_shaded">
+        <!-- Draw window frame -->
+        <rectangle
+            color="gtk:bg[NORMAL]"
+            filled="true"
+            x="0"
+            y="0"
+            width="width"
+            height="height"/>
+
+        <!--Draw window border -->
+        <!-- Note that, since the origin of the window (the upper left corner)
+             is (x, y) = (0, 0), the lower right corner is (x, y) = (width - 1,
+             height - 1). -->
+        <rectangle
+            color="gtk:text[NORMAL]"
+            filled="false"
+            x="0"
+            y="0"
+            width="width - 2"
+            height="height - 2"/>
+
+        <!-- top left to top right (outside) -->
+        <line
+            color="gtk:base[NORMAL]"
+            x1="1"
+            y1="1"
+            x2="width - 4"
+            y2="1"/>
+
+        <!-- top left to bottom left (outside) -->
+        <line
+            color="gtk:base[NORMAL]"
+            x1="1"
+            y1="1"
+            x2="1"
+            y2="height - 4"/>
+
+        <!-- top right to bottom right (outside) -->
+        <line
+            color="gtk:fg[NORMAL]"
+            x1="width - 3"
+            y1="2"
+            x2="width - 3"
+            y2="height - 4"/>
+
+        <!-- bottom left to bottom right (outside) -->
+        <line
+            color="gtk:fg[NORMAL]"
+            x1="2"
+            y1="height - 3"
+            x2="width - 3"
+            y2="height - 3"/>
+
+	 <!-- shadow -->
+        <!-- top right to bottom right -->
+        <line
+            color="gtk:text[NORMAL]"
+            x1="width - 1"
+            y1="1"
+            x2="width - 1"
+            y2="height - 1"/>
+
+        <!-- bottom left to bottom right-->
+        <line
+            color="gtk:text[NORMAL]"
+            x1="1"
+            y1="height - 1"
+            x2="width - 1"
+            y2="height - 1"/>
+
+    </draw_ops>
+
+    <!-- Unfocused window decorations -->
+    <draw_ops name="background_unfocused">
+        <!-- Draw window frame -->
+        <rectangle
+            color="gtk:bg[NORMAL]"
+            filled="true"
+            x="0"
+            y="0"
+            width="width"
+            height="height"/>
+
+        <!-- Draw window border -->
+        <!-- Note that, since the origin of the window (the upper left corner)
+             is (x, y) = (0, 0), the lower right corner is (x, y) = (width - 1,
+             height - 1). -->
+        <rectangle
+            color="gtk:fg[NORMAL]"
+            filled="false"
+            x="0"
+            y="0"
+            width="width - 2"
+            height="height - 2"/>
+
+        <!-- Draw window base -->
+        <rectangle
+            color="gtk:bg[NORMAL]"
+            filled="true"
+            x="left_width - 1"
+            y="top_height - 1"
+            width="width - left_width - right_width + 2"
+            height="height - top_height - bottom_height + 2"/>
+
+        <!-- Draw inside border -->
+        <rectangle
+            color="gtk:fg[NORMAL]"
+            filled="false"
+            x="left_width - 1"
+            y="top_height - 1"
+            width="width - left_width - right_width + 1"
+            height="height - top_height - bottom_height + 1"/>
+
+	 <!-- shadow -->
+
+        <!-- top right to bottom right -->
+        <line
+            color="gtk:fg[NORMAL]"
+            x1="width - 1"
+            y1="1"
+            x2="width - 1"
+            y2="height - 1"/>
+
+        <!-- bottom left to bottom right-->
+        <line
+            color="gtk:fg[NORMAL]"
+            x1="1"
+            y1="height - 1"
+            x2="width - 1"
+            y2="height - 1"/>
+
+    </draw_ops>
+
+    <!-- Focused title -->
+    <draw_ops name="title_focused">
+        <!-- I wish there was a for loop or something. -->
+        <!-- left side title stipple -->
+
+	 <!-- "(((width - title_width) / 2) `max` 0) - (Pad + 2)" is the actual lentgh of the line.
+	   ((title_width-1) `min` 1) triggers if no title is present. -->
+        <line
+            color="gtk:base[NORMAL]"
+            x1="0"
+            y1="3"
+            x2="((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width-1) `min` 1)"
+            y2="3"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="1"
+            y1="4"
+            x2="(((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width) `min` 1)) + 1"
+            y2="4"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="0"
+            y1="5"
+            x2="((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width-1) `min` 1)"
+            y2="5"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="1"
+            y1="6"
+            x2="(((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width) `min` 1)) + 1"
+            y2="6"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="0"
+            y1="7"
+            x2="((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width-1) `min` 1)"
+            y2="7"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="1"
+            y1="8"
+            x2="(((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width) `min` 1)) + 1"
+            y2="8"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="0"
+            y1="9"
+            x2="((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width-1) `min` 1)"
+            y2="9"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="1"
+            y1="10"
+            x2="(((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width) `min` 1)) + 1"
+            y2="10"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="0"
+            y1="11"
+            x2="((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width-1) `min` 1)"
+            y2="11"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="1"
+            y1="12"
+            x2="(((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width) `min` 1)) + 1"
+            y2="12"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="0"
+            y1="13"
+            x2="((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width-1) `min` 1)"
+            y2="13"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="1"
+            y1="14"
+            x2="(((((width - title_width) / 2) `max` 0) - (Pad + 2)) * ((title_width) `min` 1)) + 1"
+            y2="14"/>
+
+
+        <!-- right side title stipple -->
+        <line
+            color="gtk:base[NORMAL]"
+            x1="((((width - title_width) / 2) `max` 0) + title_width + Pad) * ((title_width-1) `min` 1)"
+            y1="3"
+            x2="width - Pad - 1"
+            y2="3"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="(((((width - title_width) / 2) `max` 0) + title_width + Pad)* ((title_width) `min` 1)) + 1"
+            y1="4"
+            x2="width - Pad"
+            y2="4"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="((((width - title_width) / 2) `max` 0) + title_width + Pad) * ((title_width-1) `min` 1)"
+            y1="5"
+            x2="width - Pad - 1"
+            y2="5"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="(((((width - title_width) / 2) `max` 0) + title_width + Pad)* ((title_width) `min` 1)) + 1"
+            y1="6"
+            x2="width - Pad"
+            y2="6"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="((((width - title_width) / 2) `max` 0) + title_width + Pad) * ((title_width-1) `min` 1)"
+            y1="7"
+            x2="width - Pad - 1"
+            y2="7"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="(((((width - title_width) / 2) `max` 0) + title_width + Pad)* ((title_width) `min` 1)) + 1"
+            y1="8"
+            x2="width - Pad"
+            y2="8"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="((((width - title_width) / 2) `max` 0) + title_width + Pad) * ((title_width-1) `min` 1)"
+            y1="9"
+            x2="width - Pad - 1"
+            y2="9"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="(((((width - title_width) / 2) `max` 0) + title_width + Pad)* ((title_width) `min` 1)) + 1"
+            y1="10"
+            x2="width - Pad"
+            y2="10"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="((((width - title_width) / 2) `max` 0) + title_width + Pad) * ((title_width-1) `min` 1)"
+            y1="11"
+            x2="width - Pad - 1"
+            y2="11"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="(((((width - title_width) / 2) `max` 0) + title_width + Pad)* ((title_width) `min` 1)) + 1"
+            y1="12"
+            x2="width - Pad"
+            y2="12"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="((((width - title_width) / 2) `max` 0) + title_width + Pad) * ((title_width-1) `min` 1)"
+            y1="13"
+            x2="width - Pad - 1"
+            y2="13"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="(((((width - title_width) / 2) `max` 0) + title_width + Pad)* ((title_width) `min` 1)) + 1"
+            y1="14"
+            x2="width - Pad"
+            y2="14"/>
+
+        <!-- I had originally placed the clip/title in the middle but, it
+             applied the clip to my decorations as well.  I didn't like
+             that.  This could use some improvement, try opening a file in
+             the middle of nowhere...  If the title gets too long it clashes
+             w/the window decorations on the right side...  If you can fix
+             this, let me know. -->
+        <!-- Title clip and title text -->
+        <!--<clip x="Pad" y="0" width="width - (Pad * 2)" height="height"/>-->
+        <title
+            color="gtk:text[NORMAL]"
+            x="((width - title_width) / 2) `max` 0"
+            y="0"/>
+    </draw_ops>
+
+    <!-- Unfocused title -->
+    <draw_ops name="title_unfocused">
+        <clip x="Pad" y="0" width="width - (Pad * 2)" height="height"/>
+        <title
+            color="gtk:dark[NORMAL]"
+            x="((width - title_width) / 2) `max` 0"
+            y="0"/>
+    </draw_ops>
+
+
+    <!-- Button border-->
+    <draw_ops name="button_border">
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="height - 2"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="0"
+            y1="0"
+            x2="width - 2"
+            y2="0"/>
+        <rectangle
+            color="gtk:text[NORMAL]"
+            filled="false"
+            x="1"
+            y="1"
+            width="width - 3"
+            height="height - 3"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="1"
+            y1="height - 1"
+            x2="width - 1"
+            y2="height - 1"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="width - 1"
+            y1="height - 1"
+            x2="width - 1"
+            y2="1"/>
+    </draw_ops>
+
+    <!-- Button background -->
+    <draw_ops name="button_background">
+        <rectangle
+            color="gtk:base[NORMAL]"
+            filled="false"
+            x="2"
+            y="2"
+            width="width - 5"
+            height="height - 5"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="3"
+            y1="2"
+            x2="10"
+            y2="2"/>
+        <line
+            color="gtk:base[NORMAL]"
+            x1="2"
+            y1="3"
+            x2="2"
+            y2="10"/>
+        <gradient
+            type="diagonal"
+            x="3"
+            y="3"
+            width="width - 6"
+            height="height - 6">
+            <color value="gtk:dark[NORMAL]"/>
+            <color value="gtk:base[NORMAL]"/>
+        </gradient>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="10"
+            y1="3"
+            x2="10"
+            y2="10"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="3"
+            y1="10"
+            x2="10"
+            y2="10"/>
+    </draw_ops>
+
+    <!-- Background applied to pressed buttons -->
+    <draw_ops name="button_pressed">
+       <gradient
+            type="diagonal"
+            x="2"
+            y="2"
+            width="width - 4"
+            height="height - 4">
+            <color value="gtk:dark[NORMAL]"/>
+            <color value="gtk:base[NORMAL]"/>
+        </gradient>
+       <line
+            color="gtk:dark[NORMAL]"
+            x1="10"
+            y1="2"
+            x2="10"
+            y2="10"/>
+        <line
+            color="gtk:dark[NORMAL]"
+            x1="2"
+            y1="10"
+            x2="10"
+            y2="10"/>
+    </draw_ops>
+
+    <!-- Close button -->
+    <draw_ops name="close_button">
+	 <include name="button_border"/>
+        <include name="button_background"/>
+    </draw_ops>
+
+    <draw_ops name="close_button_pressed">
+        <include name="button_border"/>
+        <include name="button_pressed"/>
+    </draw_ops>
+
+    <!-- Maximize button -->
+    <draw_ops name="maximize_button_lines">
+        <line
+            color="gtk:text[NORMAL]"
+            x1="1"
+            y1="7"
+            x2="7"
+            y2="7"/>
+        <line
+            color="gtk:text[NORMAL]"
+            x1="7"
+            y1="1"
+            x2="7"
+            y2="7"/>
+    </draw_ops>
+
+    <draw_ops name="maximize_button">
+	 <include name="button_border"/>
+        <include name="button_background"/>
+	 <include name="maximize_button_lines"/>
+    </draw_ops>
+
+    <draw_ops name="maximize_button_pressed">
+        <include name="button_border"/>
+        <include name="button_pressed"/>
+	 <include name="maximize_button_lines"/>
+    </draw_ops>
+
+    <!-- Minimize button -->
+    <draw_ops name="minimize_button_lines">
+        <line
+            color="gtk:text[NORMAL]"
+            x1="1"
+            y1="5"
+            x2="10"
+            y2="5"/>
+        <line
+            color="gtk:text[NORMAL]"
+            x1="1"
+            y1="7"
+            x2="10"
+            y2="7"/>
+    </draw_ops>
+
+    <draw_ops name="minimize_button">
+	 <include name="button_border"/>
+        <include name="button_background"/>
+	 <include name="minimize_button_lines"/>
+    </draw_ops>
+
+    <draw_ops name="minimize_button_pressed">
+        <include name="button_border"/>
+        <include name="button_pressed"/>
+	 <include name="minimize_button_lines"/>
+    </draw_ops>
+
+    <!-- Menu button -->
+    <draw_ops name="menu_button">
+  	 <icon x="0" y="0" width="mini_width" height="mini_height"/>
+	 <include name="button_border"/>
+        <include name="button_background"/>
+    </draw_ops>
+
+    <draw_ops name="menu_button_pressed">
+        <include name="button_border"/>
+        <include name="button_pressed"/>
+    </draw_ops>
+
+    <!-- The infamous blank draw_ops -->
+    <draw_ops name="blank"/>
+
+    <!-- Normal window frame styles -->
+    <!-- Focused -->
+    <frame_style
+        name="normal_focused"
+        geometry="normal_geometry">
+
+    	<piece position="entire_background" draw_ops="background_focused"/>
+
+        <piece position="title" draw_ops="title_focused"/>
+
+        <button function="close" state="normal" draw_ops="close_button"/>
+        <button function="close" state="pressed" draw_ops="close_button_pressed"/>
+
+        <button function="maximize" state="normal" draw_ops="maximize_button"/>
+        <button function="maximize" state="pressed" draw_ops="maximize_button_pressed"/>
+
+        <button function="minimize" state="normal" draw_ops="minimize_button"/>
+        <button function="minimize" state="pressed" draw_ops="minimize_button_pressed"/>
+	
+	<button function="shade" state="normal" draw_ops="minimize_button"/>
+        <button function="shade" state="pressed" draw_ops="minimize_button_pressed"/>
+
+	<button function="unshade" state="normal" draw_ops="minimize_button"/>
+        <button function="unshade" state="pressed" draw_ops="minimize_button_pressed"/>
+
+        <button function="menu" state="normal" draw_ops="menu_button"/>
+        <button function="menu" state="pressed" draw_ops="menu_button_pressed"/>
+
+        <button function="above" state="normal" draw_ops="close_button"/>
+        <button function="above" state="pressed" draw_ops="close_button_pressed"/>
+
+        <button function="unabove" state="normal" draw_ops="close_button"/>
+        <button function="unabove" state="pressed" draw_ops="close_button_pressed"/>
+
+        <button function="stick" state="normal" draw_ops="close_button"/>
+        <button function="stick" state="pressed" draw_ops="close_button_pressed"/>
+
+        <button function="unstick" state="normal" draw_ops="close_button"/>
+        <button function="unstick" state="pressed" draw_ops="close_button_pressed"/>
+    </frame_style>
+
+    <!-- Shaded -->
+    <frame_style
+        name="normal_shaded"
+        geometry="normal_geometry"
+        parent="normal_focused">
+
+        <piece position="entire_background" draw_ops="background_shaded"/>
+
+        <piece position="title" draw_ops="title_focused"/>
+    </frame_style>
+
+    <!-- Unfocused -->
+    <frame_style
+        name="normal_unfocused"
+        geometry="normal_geometry"
+        parent="normal_focused">
+
+    	<piece position="entire_background" draw_ops="background_unfocused"/>
+
+        <piece position="title" draw_ops="title_unfocused"/>
+
+        <button function="menu" state="normal" draw_ops="blank"/>
+        <button function="menu" state="prelight" draw_ops="menu_button"/>
+        <button function="menu" state="pressed" draw_ops="blank"/>
+
+        <button function="minimize" state="normal" draw_ops="blank"/>
+        <button function="minimize" state="prelight" draw_ops="minimize_button"/>
+        <button function="minimize" state="pressed" draw_ops="blank"/>
+
+        <button function="maximize" state="normal" draw_ops="blank"/>
+        <button function="maximize" state="prelight" draw_ops="maximize_button"/>
+        <button function="maximize" state="pressed" draw_ops="blank"/>
+
+        <button function="close" state="normal" draw_ops="blank"/>
+        <button function="close" state="prelight" draw_ops="close_button"/>
+        <button function="close" state="pressed" draw_ops="blank"/>
+    </frame_style>
+
+    <!-- Utility windows use the same styles as normal except they use the
+         utility geometry -->
+    <!-- Focused -->
+    <frame_style
+        name="utility_focused"
+        geometry="utility_geometry"
+        parent="normal_focused"/>
+
+    <!-- Unfocused -->
+    <frame_style
+        name="utility_unfocused"
+        geometry="utility_geometry"
+        parent="normal_unfocused"/>
+
+    <!-- Border(only) windows use the same styles as normal except they use the
+         border(less) geometry and draw no title -->
+    <!-- Focused -->
+    <frame_style
+        name="border_focused"
+        geometry="border_geometry"
+        parent="normal_focused">
+
+        <piece position="title" draw_ops="blank"/>
+    </frame_style>
+
+    <!-- Unfocused -->
+    <frame_style
+        name="border_unfocused"
+        geometry="border_geometry"
+        parent="normal_unfocused">
+
+        <piece position="title" draw_ops="blank"/>
+    </frame_style>
+
+    <frame_style_set name="normal_style_set">
+        <frame focus="yes" state="normal" resize="both"
+            style="normal_focused"/>
+        <frame focus="no" state="normal" resize="both"
+            style="normal_unfocused"/>
+
+        <frame focus="yes" state="maximized" style="normal_focused"/>
+        <frame focus="no" state="maximized" style="normal_unfocused"/>
+
+        <frame focus="yes" state="shaded" style="normal_shaded"/>
+        <frame focus="no" state="shaded" style="normal_unfocused"/>
+
+        <frame focus="yes" state="maximized_and_shaded"
+            style="normal_focused"/>
+    	<frame focus="no" state="maximized_and_shaded"
+            style="normal_unfocused"/>
+    </frame_style_set>
+
+    <frame_style_set
+        name="utility_style_set">
+
+        <frame focus="yes" state="normal" resize="both"
+            style="utility_focused"/>
+        <frame focus="no" state="normal" resize="both"
+            style="utility_unfocused"/>
+
+        <frame focus="yes" state="maximized" style="utility_focused"/>
+        <frame focus="no" state="maximized" style="utility_unfocused"/>
+
+        <frame focus="yes" state="shaded" style="utility_focused"/>
+        <frame focus="no" state="shaded" style="utility_unfocused"/>
+
+        <frame focus="yes" state="maximized_and_shaded"
+            style="utility_focused"/>
+    	<frame focus="no" state="maximized_and_shaded"
+            style="utility_unfocused"/>
+    </frame_style_set>
+
+    <frame_style_set
+        name="border_style_set">
+
+        <frame focus="yes" state="normal" resize="both"
+            style="border_focused"/>
+        <frame focus="no" state="normal" resize="both"
+            style="border_unfocused"/>
+
+        <frame focus="yes" state="maximized" style="border_focused"/>
+        <frame focus="no" state="maximized" style="border_unfocused"/>
+
+        <frame focus="yes" state="shaded" style="border_focused"/>
+        <frame focus="no" state="shaded" style="border_unfocused"/>
+
+        <frame focus="yes" state="maximized_and_shaded" style="border_focused"/>
+    	<frame focus="no" state="maximized_and_shaded"
+            style="border_unfocused"/>
+    </frame_style_set>
+
+    <window type="normal" style_set="normal_style_set"/>
+    <window type="dialog" style_set="normal_style_set"/>
+    <window type="modal_dialog" style_set="normal_style_set"/>
+    <window type="menu" style_set="normal_style_set"/>
+    <window type="utility" style_set="utility_style_set"/>
+    <window type="border" style_set="border_style_set"/>
+
+    <menu_icon function="close" state="normal" draw_ops="close_button"/>
+    <menu_icon function="maximize" state="normal" draw_ops="maximize_button"/>
+    <menu_icon function="minimize" state="normal" draw_ops="minimize_button"/>
+    <menu_icon function="unmaximize" state="normal"
+        draw_ops="button_background"/>
+</metacity_theme>
